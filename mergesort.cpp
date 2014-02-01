@@ -1,4 +1,4 @@
-// Merge sort. Not working for now.
+// Merge sort.
 
 #include<iostream>
 
@@ -18,11 +18,11 @@ void mergesort(int *arr, int size){
 	int mid = n/2;
 	int left[mid], right[n-mid];
 		
-	for (int i = 0; i < mid-1; i++)
+	for (int i = 0; i < mid; i++)
 		left[i] = arr[i];
 			
-	for (int j = mid; j < n-1; j++)
-		right[j] = arr[j];
+	for (int j = mid; j < n; j++)
+		right[j-mid] = arr[j];
 			
 	mergesort(left, mid);
 	mergesort(right, n-mid);
