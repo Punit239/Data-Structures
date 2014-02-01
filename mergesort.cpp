@@ -16,16 +16,27 @@ void mergesort(int *arr, int size){
 		return;
 		
 	int mid = n/2;
+	
+	// Splitting original array into two arrays.
+	// Repeating same recursively till we have all numbers in one element arrays.
+	// Thus we'll be having all numbers in 12(in this case) different single element arrays.
 	int left[mid], right[n-mid];
 		
+	// initialising left array
 	for (int i = 0; i < mid; i++)
 		left[i] = arr[i];
-			
+	
+	// initialising right array		
 	for (int j = mid; j < n; j++)
 		right[j-mid] = arr[j];
 			
+	// calling below function recursively till we all left half elements of original array in single element arrays
 	mergesort(left, mid);
+	
+	// calling below function recursively till we all right half elements of original array in single element arrays
 	mergesort(right, n-mid);
+	
+	// merging splitted arrays
 	merge(left, right, arr, mid, n-mid);
 	
 }
@@ -42,6 +53,7 @@ void merge(int* l, int* r, int* a, int sizeleft, int sizeright){
 	j = 0; // smallest unpicked in right
 	k = 0; // position to be filled in arr
 	
+	// comparing elements of splitted arrays and inserting elements into original array in ascending order
 	while ((i < nl) && (j < nr)){
 		
 		if (l[i] <= r[j]){
@@ -60,6 +72,7 @@ void merge(int* l, int* r, int* a, int sizeleft, int sizeright){
 		k++;
 	}
 	
+	// executed if left temporary array still has elements to be compared
 	while (i < nl){
 		
 		a[k] = l[i];
@@ -68,6 +81,7 @@ void merge(int* l, int* r, int* a, int sizeleft, int sizeright){
 		
 	}
 	
+	// executed if right temporary array still has elements to be compared
 	while (j < nr){
 		
 		a[k] = r[j];
