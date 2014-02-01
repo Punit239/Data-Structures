@@ -18,7 +18,7 @@ void mergesort(int *arr, int size){
 	int mid = n/2;
 	int left[mid], right[n-mid];
 		
-	for (int i = 0; i < mid-1; mid++)
+	for (int i = 0; i < mid-1; i++)
 		left[i] = arr[i];
 			
 	for (int j = mid; j < n-1; j++)
